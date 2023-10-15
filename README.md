@@ -8,31 +8,15 @@
 See the live demo (of the default configuration) here:
 https://pawroman.github.io/zola-theme-terminimal/
 
-Tested with Zola v0.17.2. Please note that earlier versions might not work because of breaking changes across Zola versions.
 
-#### Fork disclaimer
+## Fork disclaimer
+This theme is a fork of "Terminimal" by [pawoman](https://github.com/pawroman/zola-theme-terminimal), which is in turn a fork of the "Terminal" Hugo theme by [panr](https://github.com/panr/hugo-theme-terminal).
 
-This theme is a fork (not a port) of "Terminal" Hugo theme
-by Radosław Kozieł (aka. panr):
-https://github.com/panr/hugo-theme-terminal
-
-Many thanks for that outstanding original theme, Radek!
-
-For more information about this fork and the differences to the original theme, please see:
-[Changes compared to the original theme](#changes-compared-to-the-original-theme) below.
-
-## Versioning
-
-This theme used to be non-versioned, e.g. you'd pull the master branch, and occasionally new features or fixes would
-be released.
-
-Starting from version v1.0.0, the project adopted [Semantic Versioning](https://semver.org/).
-
-Please check the [GitHub releases](https://github.com/pawroman/zola-theme-terminimal/releases) to see a change log
-and work out if there's any breaking changes.
+### Changes from the pawroman version
+- Restored ability to display author name next to the date.
+- Added option to redirect articles to external blog.
 
 ## How to start
-
 Option A: clone the theme directly into your Zola site folder:
 
 ```
@@ -58,7 +42,6 @@ Also see the Zola documentation on using themes:
 https://www.getzola.org/documentation/themes/installing-and-using-themes/
 
 ## Shortcodes
-
 The theme adds two custom shortcodes related to image handling.
 
 ### `image`
@@ -336,51 +319,6 @@ base template, `index.html`, create file like this in `templates/index.html`:
 If you spot any bugs or wish to contribute new features, please create a new
 [Pull Request](https://github.com/pawroman/zola-theme-terminimal/pulls).
 
-## Changes compared to the original theme
-
-This theme has been forked from https://github.com/panr/hugo-theme-terminal
-
-- Slight changes in the layout and styling.
-  - Content has been centered (instead of left-aligned).
-  - The header stripes have been spaced out.
-  - Tweaks to pagination, especially on mobile (small screens).
-  - The post title underline is dashed instead of doubly-dotted.
-  - All links are underlined, as per
-    [Brutalist Web Design Guidelines](https://www.brutalist-web.design/).
-  - Tweaks to header font sizes.
-  - Minor footer tweaks.
-
-- Absolutely **no JavaScript**.
-  - No JavaScript needed to pre-process anything.
-    Zola with its Sass pre-processor is the only dependency.
-  - There's no menu trigger.
-  - Things load crazy fast, as it's all static content.
-  - Prism.js syntax highlighting is not supported (you can use
-    [Zola's](https://www.getzola.org/documentation/content/syntax-highlighting/)).
-
-- All references to social media (e.g. Twitter, OpenGraph) have been removed.
-
-- All references to external URLs (e.g. Google CDN) have been removed.
-  This theme's static assets are meant to be served from where it's hosted.
-
-- [Hack](https://github.com/source-foundry/Hack) is the default font.
-
-- The default color theme is blue (original uses orange).
-
-### New features
-
-- You can pick the accent color as well as background color.
-  There's a new `dark` background. See [Configuration](#configuration)
-  below for details.
-- Active "section" links will change color indicating the
-  active section. This is all static, done at template level.
-
-### Features retained from the original
-
-- 5 color themes, depending on your preference:
-  blue (default), green, orange, pink, red.
-- The shortcodes `image` and `figure` (See [Shortcodes](#shortcodes)).
-- Fully responsive.
 
 ## License
 
