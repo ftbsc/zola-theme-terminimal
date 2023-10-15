@@ -26,6 +26,14 @@
     </span>
 {% endmacro post_date %}
 
+{% macro author(page) %}
+    <span class="post-author">
+        {%- if page.extra.author %}
+            :: {{ page.extra.author }}
+        {% endif -%}
+    </span>
+{% endmacro author %}
+
 
 {% macro earlier_later(page) %}
     {%- if config.extra.enable_post_view_navigation and page.lower or page.higher %}
@@ -61,8 +69,8 @@
     <h1 class="post-title"><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h1>
     <div class="post-meta-inline">
         {{ post_macros::date(page=page) }}
+		{{ post_macros::author(page=page) }}
     </div>
-
     {{ post_macros::tags(page=page) }}
 {% endmacro header %}
 
@@ -76,7 +84,7 @@
         <li class="post-list">
             <a href="{{ page.permalink | safe }}">
                 <span class="post-date">{{ page.date }}</span>
-                :: <span class="post-list-title">{{ page.title }}</span></a>
+				:: <span class="post-list-title">{{ page.title }}</span></a>
             {{ post_macros::tags(page=page, short=true) }}
         </li>
     {% endfor -%}
