@@ -318,17 +318,3 @@ base template, `index.html`, create file like this in `templates/index.html`:
 
 If you spot any bugs or wish to contribute new features, please create a new
 [Pull Request](https://github.com/pawroman/zola-theme-terminimal/pulls).
-
-
-## License
-
-Copyright © 2019 Paweł Romanowski (pawroman)
-
-Original theme: Copyright © 2019 Radosław Kozieł ([@panr](https://twitter.com/panr))
-
-The theme is released under the MIT License.
-Check the [license file](../master/LICENSE.md)
-for more information.
-
-The license for Hack fonts used is included in
-[LICENSE-Hack.md](../master/LICENSE-Hack.md).
