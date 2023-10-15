@@ -1,3 +1,11 @@
+{% macro permalink(page) %}
+    {%- if page.extra.redirect_to %}
+        {{ page.extra.redirect_to }}
+    {% else %}
+        {{ page.permalink | safe }}
+	{%- endif %}
+{% endmacro permalink %}
+
 {% macro content(page, summary) %}
     {%- if summary and page.summary %}
         <div class="post-content">
@@ -5,11 +13,7 @@
         </div>
         <div>
             <!-- &#xFE0E; -- force text style - some devices render this as emoji -->
-            {%- if page.extra.redirect_to %}
-            <a class="read-more button" href="{{ page.extra.redirect_to }}">
-            {% else %}
-			<a class="read-more-button" href="{{ page.permalink | safe }}">
-			{%- endif %}
+            <a class="read-more button" href="{{ post_macros::permalink(page=page) }}">
                 <span class="button__text">Read more</span>&nbsp;
                 <span class="button__icon">&#8617;&#xFE0E;</span>
             </a>
@@ -23,7 +27,6 @@
         </div>
     {%- endif %}
 {% endmacro content %}
-
 
 {% macro date(page) %}
     <span class="post-date">
@@ -73,13 +76,7 @@
 
 
 {% macro header(page) %}
-    <h1 class="post-title">
-    {%- if page.extra.redirect_to %}
-        <a href="{{ page.extra.redirect_to }}">
-    {% else %}
-        <a href="{{ page.permalink | safe }}">
-    {%- endif %}
-    {{ page.title }}</a></h1>
+    <h1 class="post-title"><a href="{{ post_macros::permalink(page=page) }}">{{ page.title }}</a></h1>
     <div class="post-meta-inline">
         {{ post_macros::date(page=page) }}
 		{{ post_macros::author(page=page) }}
@@ -95,7 +92,7 @@
             {% continue %}
         {% endif -%}
         <li class="post-list">
-            <a href="{{ page.permalink | safe }}">
+            <a href="{{ post_macros::permalink(page=page) }}">
                 <span class="post-date">{{ page.date }}</span>
 				:: <span class="post-list-title">{{ page.title }}</span></a>
             {{ post_macros::tags(page=page, short=true) }}
