@@ -5,7 +5,11 @@
         </div>
         <div>
             <!-- &#xFE0E; -- force text style - some devices render this as emoji -->
-            <a class="read-more button" href="{{ page.permalink | safe }}">
+            {%- if page.extra.redirect_to %}
+            <a class="read-more button" href="{{ page.extra.redirect_to }}">
+            {% else %}
+			<a class="read-more-button" href="{{ page.permalink | safe }}">
+			{%- endif %}
                 <span class="button__text">Read more</span>&nbsp;
                 <span class="button__icon">&#8617;&#xFE0E;</span>
             </a>
@@ -13,6 +17,9 @@
     {% else %}
         <div class="post-content">
             {{ page.content | safe }}
+            {%- if page.extra.redirect_to %}
+                <meta http-equiv="Refresh" content="0; url='{{ page.extra.redirect_to }}'" />
+            {%- endif %}
         </div>
     {%- endif %}
 {% endmacro content %}
@@ -66,7 +73,13 @@
 
 
 {% macro header(page) %}
-    <h1 class="post-title"><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h1>
+    <h1 class="post-title">
+    {%- if page.extra.redirect_to %}
+        <a href="{{ page.extra.redirect_to }}">
+    {% else %}
+        <a href="{{ page.permalink | safe }}">
+    {%- endif %}
+    {{ page.title }}</a></h1>
     <div class="post-meta-inline">
         {{ post_macros::date(page=page) }}
 		{{ post_macros::author(page=page) }}
